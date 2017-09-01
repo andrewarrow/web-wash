@@ -18,8 +18,9 @@ class DashboardResource @Inject constructor(
 
   @GET
   fun map(
-    @CookieParam("User-Id") userId: String): DashboardView {
-    return DashboardView("") 
+    @CookieParam("User-Id") cookieData: String): DashboardView {
+    val user_id = WashUser.getUserId(cookieData)
+    return DashboardView(userClient.getSomething(user_id)) 
   }
 
 }

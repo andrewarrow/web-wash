@@ -26,6 +26,11 @@ interface UserClient {
     @Header("User-Id") id: String
   ): Maybe<User>
 
+  @GET("user/test")
+  fun getSomething(
+    @Header("User-Id") id: String
+  ): String
+
 }
 
 data class CreateBody(
