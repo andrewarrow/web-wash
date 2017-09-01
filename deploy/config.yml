@@ -1,0 +1,29 @@
+logging:
+  level: DEBUG
+  loggers:
+    "io.dropwizard": INFO
+    "com.amazonaws": INFO
+    "org.eclipse.jetty": INFO
+    "org.apache": INFO
+  appenders:
+    - type: console
+      threshold: ALL
+      queueSize: 512
+      discardingThreshold: 0
+      timeZone: UTC
+      target: stdout
+
+api_url: https://api.github.com
+
+environment: dev
+
+server:
+  rootPath: '/wash'
+  applicationConnectors:
+  - type: http
+    port: 3000
+  adminConnectors:
+  - type: http
+    port: 3001
+  type: default
+  maxThreads: 1024
