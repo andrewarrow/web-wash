@@ -16,7 +16,6 @@ import org.eclipse.jetty.server.session.SessionHandler
 import org.eclipse.jetty.servlets.CrossOriginFilter
 import org.glassfish.jersey.logging.LoggingFeature
 import org.slf4j.LoggerFactory
-import retrofit2.adapter.rxjava2.HttpException
 import java.net.URI
 import java.util.*
 import java.util.logging.Level
@@ -41,13 +40,6 @@ class WashExceptionMapper() : ExceptionMapper<Exception> {
       return Response.status(500).entity(html).build();
     }
 
-    if (e is HttpException) {
-      if (e.code() == 404) {
-        val res = Response.seeOther(URI("/")).build()
-        res.headers.add("Set-Cookie", "User-Id=; Path=/; expires=Thu, 01-Jan-70 00:00:00 GMT")
-        return res
-      }
-    }
     return Response.status(500).entity(html).build();
   }
 }
