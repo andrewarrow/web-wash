@@ -33,8 +33,8 @@ class UserResource @Inject constructor(
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
   fun login(
     @Context context: ContainerRequestContext,
-    @FormParam("username") userId: String,
-    @FormParam("password") password: String
+    @FormParam("username") userId: String//,
+    //@FormParam("password") password: String
   ): Maybe<Response> {
     return userClient
       .getCurrentUser(userId)

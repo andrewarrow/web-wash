@@ -52,6 +52,7 @@ class WebApp @Inject constructor(
 ) {
 
   fun run(config: ServerConfiguration, environment: Environment) {
+    println(config)
     configureCors(environment)
     configureMapper(environment.objectMapper)
     configureRoutes(environment.jersey())
